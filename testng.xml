@@ -2,26 +2,17 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 <listeners>
-		<listener class-name="com.burrow.listeners.ITestListenerClass" />
+		<listener class-name="com.diathrive.listeners.ITestListenerClass" />
 	</listeners>
 	<test thread-count="5" name="Test">
 		<parameter name="browserName" value="Chrome" />
 		<classes>
-			<class name="com.burrow.testcases.CrossBrowserTest">
+			<class name="com.diathrive.testcases.LoginDiathriveTest">
 				<methods>
-					<include name="verifyMemorialDaySale" />
+					<include name="loginDiathriveTest" />
 				</methods>
 			</class>
 		</classes>
 	</test> <!-- Test -->
-	<!-- <test name="Recomended Resources">
-		<parameter name="browserName" value="Chrome" />
-		<classes>
-			<class name="com.burrow.testcases.CrossBrowserTest">
-				<methods>
-					<include name="verifySeating" />
-				</methods>
-			</class>
-		</classes>
-	</test> --> <!-- Test -->
+	
 </suite> <!-- Suite -->

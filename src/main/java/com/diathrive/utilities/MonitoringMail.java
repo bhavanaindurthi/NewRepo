@@ -1,4 +1,4 @@
-package com.burrow.utilities;
+package com.diathrive.utilities;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;

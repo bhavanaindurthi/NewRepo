@@ -1,4 +1,4 @@
-package com.burrow.utilities;
+package com.diathrive.utilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 
-import com.burrow.base.BasePage;
+import com.diathrive.base.BasePage;
 
 public class TestUtil extends BasePage {
 

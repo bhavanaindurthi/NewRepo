@@ -1,4 +1,4 @@
-package com.burrow.utilities;
+package com.diathrive.utilities;
 public class TestConfig{
 
 

@@ -1,4 +1,4 @@
-package com.burrow.base;
+package com.diathrive.base;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -44,7 +44,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.burrow.utilities.ExcelReadWrite;
+import com.diathrive.utilities.ExcelReadWrite;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -129,7 +129,7 @@ public class BasePage {
 			log.debug("Navigated to : " + config.getProperty("testsiteurl"));
 			
 			driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicit.wait")),TimeUnit.SECONDS);
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait = new WebDriverWait(driver, 10);//new WebDriverWait(driver, Duration.ofSeconds(10));
 			System.out.println("DRIVER : " + driver.getClass());
 			//extentTest = extentReports.createTest(context.getName());
 		}

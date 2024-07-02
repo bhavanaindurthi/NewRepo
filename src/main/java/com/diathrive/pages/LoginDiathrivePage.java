@@ -1,4 +1,4 @@
-package com.burrow.pages;
+package com.diathrive.pages;
 
 import java.time.Duration;
 
@@ -10,27 +10,27 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.burrow.base.BasePage;
-import com.burrow.utilities.BurrowUtilities;
+import com.diathrive.base.BasePage;
+import com.diathrive.utilities.DiathriveUtilities;
 
-public class LoginBurrowPage {
-	public static Logger log = Logger.getLogger(LoginBurrowPage.class);
+public class LoginDiathrivePage {
+	public static Logger log = Logger.getLogger(LoginDiathrivePage.class);
 	WebDriver driver;
-	public LoginBurrowPage(WebDriver driver) {
+	public LoginDiathrivePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//div[contains(@class,'sign-in active-component')]//input[@name='email']")
+	@FindBy(xpath="//h2[text()='Login']//following-sibling::form//input[@name='login']")
 	WebElement txtboxEmail;
 	
-	@FindBy(xpath="//div[contains(@class,'sign-in active-component')]//input[@name='password']")
+	@FindBy(xpath="//h2[text()='Login']//following-sibling::form//input[@name='password']")
 	WebElement txtboxPassword;
 	
-	@FindBy(xpath="//button[text()='Log In']")
+	@FindBy(xpath="//h2[text()='Login']//following-sibling::form//button")
 	WebElement btnLogin;
 	
-	public void clickContinueButton() {
+	public void signIn() {
 		btnLogin.click();
 		hardWait(3);
 	}
@@ -41,7 +41,7 @@ public class LoginBurrowPage {
 	}
 	
 	public void setPassword() {
-		txtboxPassword.sendKeys("abcd@123EFG");
+		txtboxPassword.sendKeys("abcd@123E");
 		ExpectedConditions.visibilityOf(txtboxPassword);
 	}
 	
@@ -52,23 +52,19 @@ public class LoginBurrowPage {
 	By btnCloseUnlockSaleBy = By.xpath("//button[@id='button3']");
 	By frameUnlockSalePopupBy = By.xpath("//iframe[@aria-label='Modal Overlay Box Frame']");
 	
-	public AccountPage login() {
+	public HomePage login() {
 		HomePage homePage = new HomePage(driver);
-		BurrowUtilities bUtil = new BurrowUtilities(driver);
 		log.info("username ;");
 		log.info("password ;");
 		try {
-			//checkPopUpDisplayed();
-			homePage.clickLogin();
+			//homePage.clickLogin();
 			setUserName();
 			setPassword();
-			//checkPopUpDisplayed();
-			clickContinueButton();
-			//checkPopUpDisplayed();
+			signIn();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new AccountPage(driver);
+		return new HomePage(driver);
 	}
 	
 	private void checkPopUpDisplayed() {
