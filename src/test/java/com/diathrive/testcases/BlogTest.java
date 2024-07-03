@@ -6,13 +6,13 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.diathrive.base.BasePage;
+import com.diathrive.pages.BlogPage;
 import com.diathrive.pages.HomePage;
 import com.diathrive.pages.LoginDiathrivePage;
 import com.diathrive.utilities.ExcelDataReader;
 
-
-public class LoginDiathriveTest extends BasePage{
-	public static Logger log = Logger.getLogger(LoginDiathriveTest.class);
+public class BlogTest extends BasePage{
+public static Logger log = Logger.getLogger(LoginDiathriveTest.class);
 	
 	@DataProvider(name = "testData")
     public Object[][] testData() {
@@ -21,12 +21,13 @@ public class LoginDiathriveTest extends BasePage{
 	
 	//dataProvider = "testData" String username, String password
 	@Test
-	public void loginDiathriveTest() {
+	public void verifyBlogNavigation() {
 		LoginDiathrivePage loginPage = new LoginDiathrivePage(getDriver());
-		log.info("username ;");
-		log.info("password ;");
+		log.info("verify blog page navigation!");
 		HomePage homePage = loginPage.login();
 		Assert.assertTrue(homePage.getHomePage().contains("My Account"),"Successfully logged in");
+		BlogPage blogPage = homePage.gotToBlog();
+		Assert.assertTrue(blogPage.getBlogPageURL().contains("https://diathrive.com/blog"),"Successfully logged in");
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
