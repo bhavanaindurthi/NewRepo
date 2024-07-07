@@ -9,9 +9,6 @@ import java.util.Hashtable;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 
 import com.diathrive.base.BasePage;
@@ -23,7 +20,7 @@ public class TestUtil extends BasePage {
 
 	public static void captureScreenshot() throws IOException {
 
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File scrFile = ((TakesScreenshot) threadLocal.get()).getScreenshotAs(OutputType.FILE);
 
 		Date d = new Date();
 		screenshotName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";

@@ -54,7 +54,7 @@ public class BasePage {
 	public static ExtentReports extentReports;
 	public static ExtentTest extentTest;
 	
-	public static WebDriver driver;
+	public WebDriver driver;
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
 	public static FileInputStream fis;
@@ -62,6 +62,15 @@ public class BasePage {
 	public static ExcelReadWrite excel = new ExcelReadWrite();
 	public static WebDriverWait wait;
 	public static String browser;
+	public static ThreadLocal<WebDriver> threadLocal = new ThreadLocal<WebDriver>();
+	
+	public WebDriver getDriver() {
+		return threadLocal.get();
+	}
+	
+	public void setWebDriver(WebDriver driver) {
+		threadLocal.set(driver);
+	}
 
 	@Parameters("browserName")
 	@BeforeTest
@@ -96,7 +105,7 @@ public class BasePage {
 			}else {
 					System.out.println("Browsername is invalid");
 			}
-			
+			setWebDriver(driver);
 //			if(System.getenv("browser")!=null && !System.getenv("browser").isEmpty()){
 //				browser = System.getenv("browser");
 //			}else{
@@ -133,10 +142,6 @@ public class BasePage {
 			System.out.println("DRIVER : " + driver.getClass());
 			//extentTest = extentReports.createTest(context.getName());
 		}
-	}
-
-	public static WebDriver getDriver() {
-		return driver;
 	}
 	
 	@AfterTest
@@ -217,4 +222,7 @@ public class BasePage {
 	    });
 	    return  unlockSale;
 	};
+	
+	
+	
 }

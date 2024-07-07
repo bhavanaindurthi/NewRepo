@@ -23,8 +23,8 @@ public class LoginDiathriveTest extends BasePage{
 	@Test
 	public void loginDiathriveTest() {
 		LoginDiathrivePage loginPage = new LoginDiathrivePage(getDriver());
-		log.info("username ;");
-		log.info("password ;");
+		System.out.println("username ;" );
+		log.info("password ;" );
 		HomePage homePage = loginPage.login();
 		Assert.assertTrue(homePage.getHomePage().contains("My Account"),"Successfully logged in");
 		try {
@@ -33,4 +33,6 @@ public class LoginDiathriveTest extends BasePage{
 			e.printStackTrace();
 		}
 	}
+	
+	
 }
